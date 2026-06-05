@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell(ng g c pages/not-found --skip-tests)"
+    ]
+  }
+}
