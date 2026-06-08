@@ -1,15 +1,25 @@
-<header class="h-20 border-b-2 border-gray-300 border-opacity-30 grid grid-cols-3 items-center px-24">
-    <h1 class="text-white text-xl font-bold">Mi portafolio</h1>
-    <nav class="flex justify-center space-x-8">
-        <a href="/" class="text-white hover:text-secondary transition-colors duration-200">Inicio</a>
-        <a href="/about" class="text-white hover:text-secondary transition-colors duration-200">Experiencia</a>
-        <a href="/projects" class="text-white hover:text-secondary transition-colors duration-200">Proyectos</a>
-        <a href="/contact" class="text-white hover:text-secondary transition-colors duration-200">Skills</a>
+<header class="h-20 bg-slate-950 border-b-2 border-gray-300 border-opacity-30 grid grid-cols-3 items-center px-4 md:px-24">
+    <h1 class="text-white text-2xl font-black">DevPortfolio</h1>
+    <nav class="hidden md:flex justify-center space-x-8">
+        @for (item of urls; track $index) {
+            <a [routerLink]="item.route" [class.active-link]="isActive(item.route)">{{ item.label }}</a>
+        }
     </nav>
-    <div class="flex justify-end">
-    <button class="text-secondary py-2 px-6 rounded-lg border-2 border-secondary hover:text-white transition-colors duration-200">
-        Ver CV
-    </button>
+    <div class="col-span-2 md:col-span-1 flex justify-end">
+        <button (click)="downloadResume()" class="hidden md:block text-secondary py-2 px-6 rounded-lg border-2 border-secondary hover:text-white transition-colors duration-200">
+            Ver CV
+        </button>
+        <button class="md:hidden" (click)="toggleMenu()">
+            <mat-icon class="text-3xl text-secondary">menu</mat-icon>
+        </button>
     </div>
+
+    @if (menuOpen()) {
+        <nav class="absolute top-0 left-0 w-full h-dvh md:hidden flex flex-col justify-start items-center py-40 space-y-4 backdrop-blur-md">
+            @for (item of urls; track $index) {
+                <a [routerLink]="item.route" [class.active-link]="isActive(item.route)" (click)="closeMenu()">{{ item.label }}</a>
+            }
+        </nav>
+    }
 
 </header>

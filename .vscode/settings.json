@@ -1,2 +1,4 @@
 {
+    "typescript.inlayHints.parameterNames.enabled": "none",
+    "editor.inlayHints.enabled": "off" // off global, o "offUnlessPressed" para verlas solo con Ctrl+Alt
 }

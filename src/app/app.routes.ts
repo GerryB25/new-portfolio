@@ -1,24 +1,15 @@
 import { Routes } from '@angular/router';
+import { LayoutComponent } from './layout/layout';
 
 export const routes: Routes = [
     {
         path: '',
-        loadComponent: () => import('./pages/hero/hero').then(m => m.Hero)
+        redirectTo: 'inicio',
+        pathMatch: 'full',
     },
     {
-        path: 'projects',
-        loadComponent: () => import('./pages/projects/projects').then(m => m.Projects)
-    },
-    {
-        path: 'experience',
-        loadComponent: () => import('./pages/experience/experience').then(m => m.Experience)
-    },
-    {
-        path: 'skills',
-        loadComponent: () => import('./pages/skills/skills').then(m => m.Skills)
-    },
-    {
-        path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.Contact)
+        path: 'inicio',
+        component: LayoutComponent,
     },
     {
         path: '**',

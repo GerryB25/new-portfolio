@@ -147,3 +147,59 @@ body {
 
   margin: 0;
 }
+
+/* ===========================================================================
+ *  SweetAlert2 — estilo predeterminado de la app ("Deep Tech Minimalist")
+ * ===========================================================================
+ *  SweetAlert2 inyecta el modal en <body>, fuera de los componentes Angular,
+ *  por eso estos estilos van GLOBAL aquí (no en un .scss de componente).
+ *  Las clases se asignan vía `customClass` en shared/utils/swal.ts.
+ * ------------------------------------------------------------------------- */
+.swal-app {
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 0.5rem;          // cards/contenedores grandes = 8px (DESIGN)
+  font-family: 'Inter', sans-serif;
+}
+
+.swal-app__title {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--mat-sys-on-surface);
+}
+
+.swal-app__text {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.swal-app__actions {
+  gap: 0.75rem;
+}
+
+.swal-app__btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 0.25rem;         // botones = 4px (DESIGN)
+  padding: 0.5rem 1.25rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: filter 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Primary: gradiente cyan → violeta con texto oscuro (DESIGN.md) */
+.swal-app__btn--primary {
+  background-image: linear-gradient(135deg, var(--mat-sys-secondary), var(--mat-sys-tertiary));
+  color: var(--mat-sys-on-secondary);
+}
+.swal-app__btn--primary:hover {
+  filter: brightness(1.08);
+}
+
+/* Ghost: transparente, borde y texto cyan (DESIGN.md) */
+.swal-app__btn--ghost {
+  background-color: transparent;
+  border-color: var(--mat-sys-secondary);
+  color: var(--mat-sys-secondary);
+}
+.swal-app__btn--ghost:hover {
+  background-color: color-mix(in srgb, var(--mat-sys-secondary) 12%, transparent);
+}
+

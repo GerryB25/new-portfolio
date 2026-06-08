@@ -1,0 +1,20 @@
+nav {
+    a {
+        font-size: 1.1rem;
+        color: #cccccc;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        padding: 0.25rem 0.75rem;
+        transition: border-color 0.3s ease;
+    }
+
+    a:hover {
+        border-bottom: 2px solid var(--mat-sys-secondary);
+        border-color: var(--mat-sys-secondary);
+    }
+}
+
+.active-link {
+    border-bottom: 2px solid var(--mat-sys-secondary) !important;
+    color: var(--mat-sys-secondary) !important;
+}
