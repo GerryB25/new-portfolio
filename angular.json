@@ -35,6 +35,7 @@
               "@fontsource/inter/400.css",
               "@fontsource/inter/600.css",
               "@fontsource/jetbrains-mono/400.css",
+              "animate.css/animate.min.css",
               "src/styles.scss"
             ]
           },
