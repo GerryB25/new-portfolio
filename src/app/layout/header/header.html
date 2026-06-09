@@ -1,11 +1,11 @@
-<header class="h-20 bg-slate-950 border-b-2 border-gray-300 border-opacity-30 grid grid-cols-3 items-center px-4 md:px-24">
-    <h1 class="text-white text-2xl font-black">DevPortfolio</h1>
-    <nav class="hidden md:flex justify-center space-x-8">
+<header class="flex flex-row justify-between items-center h-20 bg-slate-950 border-b-2 border-gray-300 border-opacity-30 px-4 md:px-24">
+    <h1 class="text-white text-2xl font-black w-full">DevPortfolio</h1>
+    <nav class="hidden md:flex justify-center space-x-5 w-full">
         @for (item of urls; track $index) {
-            <a [routerLink]="item.route" [class.active-link]="isActive(item.route)">{{ item.label }}</a>
+            <a [routerLink]="item.route" class="text-nowrap" [class.active-link]="isActive(item.route)">{{ item.label }}</a>
         }
     </nav>
-    <div class="col-span-2 md:col-span-1 flex justify-end">
+    <div class="flex justify-end w-full">
         <button (click)="downloadResume()" class="hidden md:block text-secondary py-2 px-6 rounded-lg border-2 border-secondary hover:text-white transition-colors duration-200">
             Ver CV
         </button>

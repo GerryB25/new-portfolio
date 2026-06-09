@@ -24,6 +24,7 @@ export class Header {
 
     urls: NavRoutes[] = [
         { route: '/inicio', label: 'Inicio' },
+        { route: '/sobre-mi', label: 'Sobre mí' },
         { route: '/experiencia', label: 'Experiencia' },
         { route: '/proyectos', label: 'Proyectos' },
         { route: '/contacto', label: 'Contacto' },
