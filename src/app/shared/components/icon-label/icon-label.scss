@@ -1,0 +1,5 @@
+/* Color por defecto del label (acento del tema). Sin !important, para que
+   cualquier color pasado por `styleClass` (Tailwind, !important) lo sobreescriba. */
+.icon-label {
+  color: var(--mat-sys-secondary);
+}

@@ -1,0 +1,35 @@
+<div class="group/carousel relative h-full w-full overflow-hidden">
+
+    <!-- Track deslizante -->
+    <div class="flex h-full transition-transform duration-500 ease-out"
+         [style.transform]="'translateX(' + offset() + '%)'">
+        @for (img of images(); track img) {
+            <img [src]="img" [alt]="alt()" (click)="onImageClick()"
+                 class="h-full w-full shrink-0"
+                 [class.object-cover]="fit() === 'cover'"
+                 [class.object-contain]="fit() === 'contain'"
+                 [class.cursor-zoom-in]="zoomable()" />
+        }
+    </div>
+
+    @if (images().length > 1) {
+        <!-- Flechas (aparecen al pasar el cursor) -->
+        <button type="button" (click)="prev()" aria-label="Imagen anterior"
+                class="absolute left-2 top-1/2 -translate-y-1/2 grid h-8 w-8 place-items-center rounded-full bg-black/40 text-white opacity-0 transition-opacity hover:bg-black/60 group-hover/carousel:opacity-100">
+            <mat-icon style="font-size: 1.25rem; width: 1.25rem; height: 1.25rem;">chevron_left</mat-icon>
+        </button>
+        <button type="button" (click)="next()" aria-label="Imagen siguiente"
+                class="absolute right-2 top-1/2 -translate-y-1/2 grid h-8 w-8 place-items-center rounded-full bg-black/40 text-white opacity-0 transition-opacity hover:bg-black/60 group-hover/carousel:opacity-100">
+            <mat-icon style="font-size: 1.25rem; width: 1.25rem; height: 1.25rem;">chevron_right</mat-icon>
+        </button>
+
+        <!-- Puntos -->
+        <div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5">
+            @for (img of images(); track $index) {
+                <button type="button" (click)="goTo($index)" [attr.aria-label]="'Ir a la imagen ' + ($index + 1)"
+                        class="h-1.5 rounded-full transition-all"
+                        [class]="$index === index() ? 'w-4 bg-white' : 'w-1.5 bg-white/60 hover:bg-white/80'"></button>
+            }
+        </div>
+    }
+</div>

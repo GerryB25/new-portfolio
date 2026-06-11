@@ -3,7 +3,8 @@
     "allow": [
       "PowerShell(npm run build 2>&1)",
       "PowerShell(ng g c pages/not-found --skip-tests)",
-      "PowerShell(\\(node -e \"console.log\\('sweetalert2 v' + require\\('sweetalert2/package.json'\\).version\\)\"\\))"
+      "PowerShell(\\(node -e \"console.log\\('sweetalert2 v' + require\\('sweetalert2/package.json'\\).version\\)\"\\))",
+      "PowerShell(ng g c shared/components/image-lightbox --skip-tests)"
     ]
   }
 }

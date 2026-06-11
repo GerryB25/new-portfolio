@@ -1,1 +1,40 @@
-<!-- projects -->
+<div class="section-pad bg-white h-auto py-12 text-slate-800">
+    <app-icon-label text="Proyectos" icon="folder" styleClass="text-[#5516be]" />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+
+        @for (project of projects; track project.title) {
+            <article class="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#5516be]">
+
+                <!-- Imagen (carrusel) -->
+                <div class="h-48 w-full bg-slate-100">
+                    <app-image-carousel [images]="project.images" [alt]="project.title"
+                                        (imageClick)="openLightbox(project.images, project.title, $event)" />
+                </div>
+
+                <!-- Cuerpo -->
+                <div class="flex flex-1 flex-col gap-3 p-5">
+                    <h3 class="text-lg font-bold text-slate-900">{{ project.title }}</h3>
+                    <p class="text-sm leading-relaxed text-slate-500">{{ project.description }}</p>
+
+                    <div class="flex flex-wrap gap-2">
+                        @for (tag of project.tags; track tag) {
+                            <span class="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">{{ tag }}</span>
+                        }
+                    </div>
+
+                    <div class="mt-auto flex items-center justify-between border-t border-slate-100 pt-3">
+                        <a [href]="project.demoUrl" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#5516be] transition-colors hover:text-[#3d0f8a]">
+                            Ver demo
+                            <mat-icon style="font-size: 1.1rem; width: 1.1rem; height: 1.1rem;">launch</mat-icon>
+                        </a>
+                        <a [href]="project.codeUrl" aria-label="Ver código" class="text-slate-400 transition-colors hover:text-slate-700">
+                            <mat-icon style="font-size: 1.25rem; width: 1.25rem; height: 1.25rem;">code</mat-icon>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        }
+
+    </div>
+</div>

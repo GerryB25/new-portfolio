@@ -1,0 +1,14 @@
+<div class="relative h-[80vh] w-[92vw] max-w-5xl bg-black">
+    <button type="button" (click)="close()" aria-label="Cerrar"
+            class="absolute right-3 top-3 z-20 grid h-9 w-9 place-items-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <app-image-carousel
+        [images]="data.images"
+        [alt]="data.alt"
+        [startIndex]="data.index"
+        [zoomable]="false"
+        fit="contain"
+        class="block h-full w-full" />
+</div>

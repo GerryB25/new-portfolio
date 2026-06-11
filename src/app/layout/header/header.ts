@@ -1,47 +1,77 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { Router, RouterLink, NavigationEnd } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { filter, map } from 'rxjs';
-import { appSwal } from '../../shared/utils/swal';
+import { afterNextRender, Component, OnDestroy, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
+import { appSwal } from '../../shared/utils/swal';
 
-interface NavRoutes {
-    route: string;
+interface NavItem {
+    id: string;
     label: string;
 }
 
 @Component({
     selector: 'app-header',
-    imports: [RouterLink, MatIcon],
+    imports: [MatIcon],
     templateUrl: './header.html',
     styleUrl: './header.scss',
 })
-export class Header {
-    private readonly router = inject(Router);
+export class Header implements OnDestroy {
+    private observer?: IntersectionObserver;
+
+    constructor() {
+        afterNextRender(() => this.setupScrollSpy());
+    }
+
+    private setupScrollSpy(retries = 10): void {
+        const sections = this.urls
+            .map(({ id }) => document.getElementById(id))
+            .filter((el): el is HTMLElement => el !== null);
+
+        if (!sections.length) {
+            if (retries > 0) requestAnimationFrame(() => this.setupScrollSpy(retries - 1));
+            return;
+        }
+
+        this.observer = new IntersectionObserver(
+            (entries) => {
+                for (const entry of entries) {
+                    if (entry.isIntersecting) this.activeSection.set(entry.target.id);
+                }
+            },
+            { rootMargin: '-50% 0px -50% 0px', threshold: 0 },
+        );
+        sections.forEach((el) => this.observer!.observe(el));
+    }
+
+    ngOnDestroy(): void {
+        this.observer?.disconnect();
+    }
+
     private readonly resumeFrontendPath = 'Luis_Gerardo_De_La_Cruz_Frontend_Engineer_CV.pdf';
     private readonly resumeMobilePath = 'Luis_Gerardo_De_La_Cruz_Mobile_Developer_CV.pdf';
-    readonly menuOpen = signal(false);
 
-    urls: NavRoutes[] = [
-        { route: '/inicio', label: 'Inicio' },
-        { route: '/sobre-mi', label: 'Sobre mí' },
-        { route: '/experiencia', label: 'Experiencia' },
-        { route: '/proyectos', label: 'Proyectos' },
-        { route: '/contacto', label: 'Contacto' },
+    readonly menuOpen = signal(false);
+    readonly activeSection = signal('inicio');
+
+    /** Cada item apunta al `id` de su sección en la página. */
+    readonly urls: NavItem[] = [
+        { id: 'inicio', label: 'Inicio' },
+        { id: 'sobre-mi', label: 'Sobre mí' },
+        { id: 'experiencia', label: 'Experiencia' },
+        { id: 'proyectos', label: 'Proyectos' },
     ];
 
-    readonly currentUrl = toSignal(
-        this.router.events.pipe(
-            filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-            map(() => this.router.url),
-        ),
-        { initialValue: this.router.url },
-    );
+    /** Hace scroll suave hacia la sección (compensando el header fijo). */
+    scrollTo(id: string): void {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const headerOffset = 80; // h-20 = 5rem
+        const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        this.activeSection.set(id);
+        this.closeMenu();
+    }
 
-    readonly selected = computed(() => this.currentUrl());
-
-    isActive(path: string): boolean {
-        return this.currentUrl() === path;
+    isActive(id: string): boolean {
+        return this.activeSection() === id;
     }
 
     toggleMenu() {

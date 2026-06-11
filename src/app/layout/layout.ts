@@ -8,7 +8,7 @@ import { MainContent } from "./main-content/main-content";
     imports: [Header, Footer, MainContent],
     templateUrl: './layout.html',
     host: {
-        class: '!w-full h-dvh',
+        class: '!w-full min-h-dvh',
     },
 })
 export class LayoutComponent {}

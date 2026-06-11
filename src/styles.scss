@@ -26,6 +26,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Padding de sección reutilizable: se aplica DENTRO de cada componente para
+   que el fondo de cada sección sea full-bleed y el padding sea idéntico. */
+@layer components {
+  .section-pad {
+    @apply w-full px-4 py-4 md:px-16 md:py-6;
+  }
+}
+
+/* Lightbox de imágenes: el diálogo de Material no aplica padding, así la
+   imagen ocupa todo el panel. */
+.lightbox-panel .mat-mdc-dialog-surface {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: transparent;
+}
+
+/* Modal de contacto (dentro de SweetAlert2). */
+.swal-contact__lead {
+  margin: 0 0 1.25rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.swal-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.swal-contact__row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 0.6rem;
+  color: var(--mat-sys-on-surface);
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.swal-contact__row:hover {
+  background: var(--mat-sys-surface-container-high);
+  border-color: var(--mat-sys-secondary);
+  transform: translateY(-1px);
+}
+
+.swal-contact__icon {
+  display: grid;
+  place-items: center;
+  color: var(--mat-sys-secondary);
+}
+
+.swal-contact__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.swal-contact__text small {
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.8rem;
+}
+
 /* ===========================================================================
  *  Angular Material — Tema base (Material 3, dark)
  * ===========================================================================

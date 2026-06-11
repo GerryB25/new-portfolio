@@ -1,1 +1,47 @@
-<!-- about -->
+<div class="section-pad bg-white h-auto py-12 text-slate-800 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="flex flex-col gap-6">
+        <app-icon-label text="Sobre mí" icon="person" styleClass="text-[#5516be]" />
+
+        <h2 class="text-3xl md:text-4xl font-black leading-tight text-slate-900">
+            Desarrollador Frontend &amp; Mobile centrado en
+            <span class="text-[#5516be] font-semibold">UX/UI, clean code y escalabilidad.</span>
+        </h2>
+
+        <p class="text-slate-600 leading-relaxed max-w-xl">
+            Tengo más de 3 años construyendo aplicaciones web de alto uso y apps móviles en
+            producción para el sector público y privado. Levanto proyectos desde cero:
+            arquitectura, integración de APIs REST, autenticación JWT y control de roles,
+            con foco en componentes reutilizables, buenas prácticas y código mantenible.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4">
+            @for (stat of stats; track stat.label) {
+                <div class="rounded-xl border border-gray-400 p-4 flex flex-col items-center text-center gap-1 col-span-full md:col-span-1">
+                    <mat-icon class="text-[#5516be]">{{ stat.icon }}</mat-icon>
+                    <span class="text-2xl font-bold text-slate-900">{{ stat.value }}</span>
+                    <span class="text-xs text-slate-500">{{ stat.label }}</span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- ── Columna derecha: Habilidades ──────────────────────────────── -->
+    <div class="flex flex-col gap-6">
+        <app-icon-label text="Habilidades" icon="bolt" styleClass="text-[#5516be]" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7">
+            @for (skill of skills; track skill.title) {
+                <div class="flex gap-3">
+                    <div class="shrink-0 h-11 w-11 rounded-xl flex items-center justify-center {{ skill.iconClass }}">
+                        <mat-icon>{{ skill.icon }}</mat-icon>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-1.5">
+                        <h3 class="font-semibold text-slate-900">{{ skill.title }}</h3>
+                        <p class="text-sm text-slate-500 leading-snug">{{ skill.techs }}</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

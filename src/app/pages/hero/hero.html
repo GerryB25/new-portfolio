@@ -1,35 +1,44 @@
-<div class="h-full w-full">
-    <div class="flex flex-col justify-center items-start gap-2 col-span-2">
-        <div class="animate__animated animate__fadeInLeft">
-            <div class="flex justify-start items-center gap-2">
-                <mat-icon>code</mat-icon>
-                <h2 class="text-lg font-bold">Desarrollador Frontend & Mobile</h2>
-            </div>
-            <h2 class="text-3xl font-bold tracking-wide my-2">Luis Gerardo De La Cruz González</h2>
-            <p class="text-lg mb-10">
-                <span class="text-2xl"><strong>3+ años</strong> construyendo aplicaciones con <span class="text-secondary">Angular y Flutter</span>.</span>
-                <br>
-                <br>
-                He desarrollado interfaces web de uso masivo y sistemas internos para sector público y privado.
-                <br>
-                Levanto proyectos desde cero: arquitectura, integración de
-                APIs REST, autenticación JWT y control de roles, siempre con foco en código limpio y reutilizable.
+<div class="section-pad bg-slate-950 pt-40 pb-12 h-auto md:h-[36rem] 2xl:h-[48rem] grid grid-cols-1 lg:grid-cols-2 items-center gap-12 overflow-hidden">
+    <div class="flex flex-col justify-center items-start gap-5">
+        <div class="animate__animated animate__fadeInLeft flex flex-col gap-3">
+            <app-icon-label text="Desarrollador Frontend &amp; Mobile" />
+
+            <!-- Nombre -->
+            <h1 class="text-5xl lg:text-6xl font-bold tracking-tight leading-tight" style="font-family: Montserrat, sans-serif;">
+                Luis Gerardo<br>De La Cruz González
+            </h1>
+
+            <!-- Intro -->
+            <p class="text-2xl mt-1">
+                <strong>3+ años</strong> construyendo aplicaciones con
+                <span class="bg-gradient-to-r from-secondary to-tertiary bg-clip-text text-transparent font-bold">Angular y Flutter</span>.
+            </p>
+            <p class="text-lg text-on-surface-variant max-w-2xl">
+                Desarrollo de aplicaciones modernas, escalables y mantenibles con un enfoque en código limpio, buenas prácticas y experiencia de usuario.
             </p>
         </div>
 
-        <div class="flex flex-col justify-center items-start gap-y-3 animate__animated animate__delay-1s animate__fadeIn">
-            <span class="text-lg font-semibold">Tecnologias principales:</span>
-            <div class="flex flex-wrap items-center gap-5">
-                <img src="angular.svg" alt="Angular" matTooltip="Angular" class="h-10 w-10" />
-                <img src="typescript.svg" alt="TypeScript" matTooltip="TypeScript" class="h-10 w-10" />
-                <img src="flutter.svg" alt="Flutter" matTooltip="Flutter" class="h-10 w-10" />
-                <img src="firebase.svg" alt="Firebase" matTooltip="Firebase" class="h-10 w-10" />
-                <img src="tailwind.svg" alt="Tailwind CSS" matTooltip="Tailwind CSS" class="h-10 w-10" />
-                <img src="git.svg" alt="Git" matTooltip="Git" class="h-10 w-10" />
+        <!-- Tecnologías + contacto -->
+        <div class="w-full flex flex-wrap items-end justify-between gap-6 animate__animated animate__delay-1s animate__fadeIn">
+            <div class="flex flex-col justify-center items-start gap-y-3">
+                <span class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant">Tecnologías principales</span>
+                <div class="flex flex-wrap items-center gap-5">
+                    <img src="angular.svg" alt="Angular" matTooltip="Angular" class="h-10 w-10" />
+                    <img src="typescript.svg" alt="TypeScript" matTooltip="TypeScript" class="h-10 w-10" />
+                    <img src="flutter.svg" alt="Flutter" matTooltip="Flutter" class="h-10 w-10" />
+                    <img src="firebase.svg" alt="Firebase" matTooltip="Firebase" class="h-10 w-10" />
+                    <img src="tailwind.svg" alt="Tailwind CSS" matTooltip="Tailwind CSS" class="h-10 w-10" />
+                    <img src="git.svg" alt="Git" matTooltip="Git" class="h-10 w-10" />
+                </div>
             </div>
+
+            <button (click)="openContact()"
+            class="rounded-lg border-2 border-secondary px-6 py-3 font-semibold text-secondary transition-colors hover:bg-secondary hover:text-on-secondary">
+            Contáctame</button>
         </div>
     </div>
-    <div class="bg-blue-400">
 
+    <div class="hero-visual hidden lg:flex items-center justify-center">
+        <img src="desktop.png" alt="desktop" class="hero-img w-9/12" />
     </div>
 </div>
