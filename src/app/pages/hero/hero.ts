@@ -10,10 +10,9 @@ import { appSwal } from '../../shared/utils/swal';
     styleUrl: './hero.scss',
 })
 export class Hero {
-    /** Datos de contacto (edítalos aquí). */
     private readonly contact = {
-        github: 'https://github.com/gerrybogard',
-        githubLabel: '@gerrybogard',
+        github: 'https://github.com/gerryb25',
+        githubLabel: '@gerryb25',
         linkedin: 'https://www.linkedin.com/in/luis-gerardo-de-la-cruz',
         linkedinLabel: 'Luis Gerardo De La Cruz',
         email: 'dev.gerardocgweb@gmail.com',
@@ -30,8 +29,7 @@ export class Hero {
             title: 'Contáctame',
             html: `
                 <p class="swal-contact__lead">
-                    ¿Tienes un proyecto en mente o una oportunidad laboral? Escríbeme por el
-                    canal que prefieras y con gusto te respondo.
+                    Escríbeme por el canal que prefieras y con gusto te respondo.
                 </p>
                 <div class="swal-contact">
                     <a class="swal-contact__row" href="${c.github}" target="_blank" rel="noopener">
